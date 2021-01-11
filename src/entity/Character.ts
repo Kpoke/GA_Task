@@ -2,10 +2,10 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToOne,
-  JoinColumn,
+  ManyToOne,
   ManyToMany,
   JoinTable,
+  BaseEntity,
 } from "typeorm";
 import { CharacterStatus } from "../character-status.enum";
 import { Gender } from "../gender.enum";
@@ -13,7 +13,7 @@ import { Location } from "./Location";
 import { Episode } from "./Episode";
 
 @Entity()
-export class Character_Data {
+export class Character_Data extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -32,9 +32,14 @@ export class Character_Data {
   @Column({ nullable: false })
   gender: Gender;
 
-  @OneToOne((type) => Location, { nullable: true })
-  @JoinColumn()
+  @ManyToOne((type) => Location, (location) => location.characters, {
+    nullable: true,
+    eager: false,
+  })
   location: Location;
+
+  @Column({ nullable: true })
+  locationId: number;
 
   @Column({
     type: "timestamp",
@@ -47,5 +52,5 @@ export class Character_Data {
     nullable: true,
   })
   @JoinTable()
-  episode: Episode;
+  episodes: Episode[];
 }

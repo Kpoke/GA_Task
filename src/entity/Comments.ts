@@ -1,8 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  BaseEntity,
+} from "typeorm";
 import { Episode } from "./Episode";
 
 @Entity()
-export class Comment {
+export class Comment extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -20,7 +26,10 @@ export class Comment {
 
   @ManyToOne((type) => Episode, (episode) => episode.episodeComments, {
     eager: false,
-    nullable: true,
+    nullable: false,
   })
   episode: Episode;
+
+  @Column({ nullable: true })
+  episodeId: number;
 }
