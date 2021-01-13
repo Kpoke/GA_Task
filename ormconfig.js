@@ -4,7 +4,7 @@ module.exports = {
   port: process.env.DB_PORT,
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  database: "ga_task",
+  database: process.env.DB_NAME || "ga_task",
   synchronize: process.env.DB_SYNCHRONIZE,
   logging: false,
   entities: ["src/entity/**/*.ts"],
