@@ -89,11 +89,13 @@ export class CharacterController {
 
     try {
       await newCharacter.save();
-      await this.characterRepository
-        .createQueryBuilder()
-        .relation(Character_Data, "episodes")
-        .of(newCharacter)
-        .add(episodeIds);
+      if (episodeIds && episodeIds.length > 0) {
+        await this.characterRepository
+          .createQueryBuilder()
+          .relation(Character_Data, "episodes")
+          .of(newCharacter)
+          .add(episodeIds);
+      }
       return newCharacter;
     } catch (e) {
       if (e.errno === 1452) return { error: "Invalid Foreign Key Id" };

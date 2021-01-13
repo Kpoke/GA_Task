@@ -29,11 +29,13 @@ export class LocationController {
 
     try {
       await newLocation.save();
-      await this.locationRepository
-        .createQueryBuilder()
-        .relation(Location, "characters")
-        .of(newLocation)
-        .add(characterIds);
+      if (characterIds && characterIds.length > 0) {
+        await this.locationRepository
+          .createQueryBuilder()
+          .relation(Location, "characters")
+          .of(newLocation)
+          .add(characterIds);
+      }
       return newLocation;
     } catch (e) {
       if (e.errno === 1452) return { error: "Invalid Foreign Key Id" };
