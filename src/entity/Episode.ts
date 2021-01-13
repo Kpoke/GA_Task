@@ -17,7 +17,7 @@ export class Episode extends BaseEntity {
   @Column({ nullable: false })
   name: string;
 
-  @Column({ nullable: false, type: "timestamp", default: 0 })
+  @Column({ nullable: false, type: "datetime" })
   releaseDate: Date;
 
   @Column({ nullable: false })
