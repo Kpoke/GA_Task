@@ -2,7 +2,7 @@ import { EpisodeController } from "./controller/EpisodeController";
 import { CommentController } from "./controller/CommentController";
 import { CharacterController } from "./controller/CharacterController";
 import { LocationController } from "./controller/LocationController";
-import { getIp, none } from "./middlewares/requestIp";
+import { none } from "./middlewares/requestIp";
 
 export const Routes = [
   {
@@ -23,7 +23,7 @@ export const Routes = [
     method: "post",
     route: "/comments",
     controller: CommentController,
-    middleware: getIp,
+    middleware: none,
     action: "create",
   },
   {
