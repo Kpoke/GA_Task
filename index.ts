@@ -42,7 +42,7 @@ createConnection()
     // start express server
     app.listen(process.env.PORT || 3001);
 
-    intialize_db(connection);
+    // intialize_db(connection);
 
     console.log("Express server has started on port 3001.");
   })
