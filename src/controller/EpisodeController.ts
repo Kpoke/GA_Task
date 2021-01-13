@@ -12,6 +12,7 @@ export class EpisodeController {
       .createQueryBuilder("episode")
       .leftJoinAndSelect("episode.episodeComments", "comments")
       .select([
+        "episode.id AS id",
         "name",
         "releaseDate",
         "episode.created AS created",
