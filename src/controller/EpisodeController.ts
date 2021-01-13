@@ -42,13 +42,17 @@ export class EpisodeController {
 
     try {
       await newEpisode.save();
-      await this.episodeRepository
-        .createQueryBuilder()
-        .relation(Episode, "characters")
-        .of(newEpisode)
-        .add(characterIds);
+      if (characterIds && characterIds.length > 0) {
+        await this.episodeRepository
+          .createQueryBuilder()
+          .relation(Episode, "characters")
+          .of(newEpisode)
+          .add(characterIds);
+      }
+
       return newEpisode;
     } catch (e) {
+      console.log(e);
       if (e.errno === 1452) return { error: "Invalid Foreign Key Id" };
       return { error: "An Error Occurred" };
     }
