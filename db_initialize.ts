@@ -1,18 +1,3 @@
-// await connection.manager.save(
-//   connection.manager.create(User, {
-//     firstName: "Timber",
-//     lastName: "Saw",
-//     age: 27,
-//   })
-// );
-// await connection.manager.save(
-//   connection.manager.create(User, {
-//     firstName: "Phantom",
-//     lastName: "Assassin",
-//     age: 24,
-//   })
-// );
-
 import { Character_Data } from "./src/entity/Character";
 import { CharacterStatus } from "./src/character-status.enum";
 import { Gender } from "./src/gender.enum";
