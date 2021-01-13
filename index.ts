@@ -40,7 +40,7 @@ createConnection()
     });
 
     // start express server
-    app.listen(3001);
+    app.listen(process.env.PORT || 3001);
 
     // intialize_db(connection);
 
