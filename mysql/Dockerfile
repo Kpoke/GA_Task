@@ -1,0 +1,4 @@
+FROM mysql
+
+ENV MYSQL_DATABASE "ga_task"
+ENV MYSQL_ROOT_PASSWORD "holodja123"
