@@ -17,12 +17,16 @@ Run the following commands
 
 mysql -u root -p
 
-A prompt for password will come out. Please type "holodja123" 
+A prompt for password will come out. Please type your mysql password
 
-Then run the following commands. 
+Execute the following query in MYSQL Workbench
 
-ALTER USER 'root'@'%' IDENTIFIED BY 'root' PASSWORD EXPIRE NEVER;
-ALTER USER 'root'@'%' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'root';
-FLUSH PRIVILEGES;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
+
+Where root as your user localhost as your URL and password as your password
+
+Then run this query to refresh privileges:
+
+flush privileges;
 
 Type 'exit' to exit. 
